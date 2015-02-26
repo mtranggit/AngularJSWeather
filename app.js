@@ -20,6 +20,7 @@ weatherApp.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
+// Custom Directive
 weatherApp.directive('forecastReport', function() {
     
     // return the directive definition
@@ -37,25 +38,22 @@ weatherApp.directive('forecastReport', function() {
     
 });
 
+// Service component
 weatherApp.service('cityService', function() {
     this.city = "Sydney, NSW";
 });
            
+// Controllers
 weatherApp.controller('homeController', ['$scope','cityService', function ($scope, cityService) {
     
     this.city = cityService.city;
-//    $scope.city = cityService.city;
-    
-//    $scope.$watch('city', function () {
-//        cityService.city = $scope.city;
-//    });
+
     $scope.$watch(angular.bind(this, function () {
         return this.city;
     }), function (newVal, oldVal) {
         cityService.city = newVal;
     });
 }]);
-
 
 weatherApp.controller('forecastController',['$scope','$resource','$routeParams','cityService', function ($scope, $resource, $routeParams, cityService) {
     this.city = cityService.city;
@@ -84,21 +82,5 @@ weatherApp.controller('forecastController',['$scope','$resource','$routeParams',
 }]);
 
 
-weatherApp.controller('testController',['$scope', function($scope) {
-    
-//    var rulesrequest = new XMLHttpRequest();
-//    rulesrequest.onreadystatechange = function () {
-//        
-//        $scope.$apply(function () {
-//            if (rulesrequest.readyState == 4 && rulesrequest.status == 200) {
-//                $scope.rules = JSON.parse(rulesrequest.responseText);
-//            }
-//        });
-//    }
-//    
-//    rulesrequest.open("GET", "http://localhost:8080/api", true);
-//    rulesrequest.send();
-
-}]);
 
 
