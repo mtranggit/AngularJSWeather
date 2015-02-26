@@ -20,14 +20,14 @@ angular.module('weatherApp').controller('forecastController',['$scope','$resourc
         {callback: "JSON_CALLBACK"},
         { get: {method: "JSONP"}});
     
-    this.weatherResult = this.weatherAPI.get({ q: this.city, cnt: this.days});
+    this.weatherResult = this.weatherAPI.get({ q: this.city, cnt: this.days });
     
     this.convertToFahrenheit = function(degK) {
         return Math.round( 1.8 * (degK - 273.15) + 32);
     };
     
     this.convertToCelcius = function(degK) {
-        return Math.round( degK - 273.15);
+        return Math.round(degK - 273.15);
     };
     
     this.convertToDate = function(dtms) {
