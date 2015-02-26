@@ -1,0 +1,42 @@
+<div class="container">
+    
+    <h1>Forecast for {{ forecast.city }} </h1>
+    
+    <hr/>
+    Days: <a href="#/forecast/2" ng-class="{ 'bg-primary': forecast.days === '2'}">2</a> |
+    <a href="#/forecast/5" ng-class="{ 'bg-primary': forecast.days === '5'}">5</a> | 
+    <a href="#/forecast/7" ng-class="{ 'bg-primary': forecast.days === '7'}">7</a>
+    <hr/>
+    
+    <div ng-repeat="w in forecast.weatherResult.list">
+        <div class="row">
+            <div class="col-md-12">
+                
+<!--                custom directive -->
+                <forecast-report 
+                        
+                    weather-day="w" 
+                        
+                    convert-to-celcius="forecast.convertToCelcius(daytimeTemp)" 
+                        
+                    convert-to-date="forecast.convertToDate(dt)" 
+                        
+                    date-format="mediumDate">
+                        
+                </forecast-report>
+            
+<!--
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> {{ forecast.convertToDate(w.dt) | date : 'mediumDate' }} </h3>
+                    </div>
+                    <div class="panel-body">
+                        Daytime temperature: {{ forecast.convertToCelcius(w.temp.day) }}&ordm;C
+                    </div>
+                </div>
+-->
+            </div>
+        </div>    
+    </div>
+    
+</div>
