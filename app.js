@@ -1,23 +1,6 @@
 var weatherApp = angular.module('weatherApp',['ngRoute','ngResource']);
 
-weatherApp.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'pages/home.htm',
-            controller: 'homeController',
-            controllerAs: 'home'
-        })
-        .when('/forecast', {
-            templateUrl: 'pages/forecast.htm',
-            controller: 'forecastController',
-            controllerAs: 'forecast'
-        })
-        .when('/forecast/:days', {
-            templateUrl: 'pages/forecast.htm',
-            controller: 'forecastController',
-            controllerAs: 'forecast'
-        });
-}]);
+
 
 
 // Custom Directive
@@ -36,11 +19,6 @@ weatherApp.directive('forecastReport', function() {
         }
     }
     
-});
-
-// Service component
-weatherApp.service('cityService', function() {
-    this.city = "Sydney, NSW";
 });
            
 // Controllers
