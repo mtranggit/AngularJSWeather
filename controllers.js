@@ -1,5 +1,5 @@
 // Controllers
-angular.module('weatherApp').controller('homeController', ['$scope','cityService', function ($scope, cityService) {
+angular.module('weatherApp').controller('homeController', ['$scope', '$location', 'cityService', function ($scope, $location, cityService) {
     
     this.city = cityService.city;
 
@@ -8,6 +8,11 @@ angular.module('weatherApp').controller('homeController', ['$scope','cityService
     }), function (newVal, oldVal) {
         cityService.city = newVal;
     });
+    
+    this.submit = function() {
+        $location.path("/forecast");   
+    };
+    
 }]);
 
 angular.module('weatherApp').controller('forecastController',['$scope','$resource','$routeParams','cityService', function ($scope, $resource, $routeParams, cityService) {
