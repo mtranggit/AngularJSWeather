@@ -15,7 +15,7 @@ angular.module('weatherApp').controller('homeController', ['$scope', '$location'
     
 }]);
 
-angular.module('weatherApp').controller('forecastController',['$scope','$resource','$routeParams','cityService', 'weatherService', function ($scope, $resource, $routeParams, cityService, weatherService) {
+angular.module('weatherApp').controller('forecastController',['$routeParams','cityService', 'weatherService', function ($routeParams, cityService, weatherService) {
     this.city = cityService.city;
     
     this.days = $routeParams.days || '5'; //default to 5 days.
